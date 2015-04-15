@@ -45,7 +45,7 @@ class Wpzoom_Instagram_Widget extends WP_Widget {
 	 */
 	public function scripts() {
 		wp_enqueue_style( 'zoom-instagram-widget', plugin_dir_url( dirname( __FILE__ ) . '/instagram-widget-by-wpzoom.php' ) . 'css/instagram-widget.css', array(), '20150202' );
-		wp_enqueue_script( 'zoom-instagram-widget', plugin_dir_url( dirname( __FILE__ ) . '/instagram-widget-by-wpzoom.php' ) . 'js/instagram-widget.js', array( 'jquery' ), '20150202' );
+		wp_enqueue_script( 'zoom-instagram-widget', plugin_dir_url( dirname( __FILE__ ) . '/instagram-widget-by-wpzoom.php' ) . 'js/instagram-widget.js', array( 'jquery' ), '20150415' );
 	}
 
 	/**
@@ -69,7 +69,7 @@ class Wpzoom_Instagram_Widget extends WP_Widget {
 
 		$items = $this->get_items( $instance['screen-name'], $instance['image-limit'] );
 
-		if ( false === $items ) {
+		if ( ! is_array( $items ) ) {
 			$this->display_errors();
 		} else {
 			$this->display_items( $items, $instance );
